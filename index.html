@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AnswerFlow for Confluence — Documentation &amp; Migration Guide</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">AnswerFlow for Confluence</a>
+      <nav class="nav-links">
+        <a href="index.html">Docs &amp; Quickstart</a>
+        <a href="#migration">Migration Guide</a>
+        <a href="privacy.html">Privacy &amp; Security</a>
+        <a href="terms.html">Terms &amp; SLA</a>
+        <a href="#support">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <span class="badge">Runs on Atlassian · Zero Data Egress · Built on Forge</span>
+    <h1>AnswerFlow: Questions, Answers &amp; Zero-Egress AI Q&amp;A for Confluence</h1>
+    <p class="lead">
+      Turn Confluence Cloud into a fast, governed internal StackOverflow—complete with full-text search across answers, granular Ask vs. Answer permissions, a Live FAQ Accordion Macro, 1-click Promote-to-Page, and native Zero-Egress AI Answer Deflection.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Zero-Egress AI Deflection</h3>
+        <p>Powered natively by Atlassian Forge LLMs inside Atlassian's trust boundary. Checks existing Q&amp;A and Confluence pages (strictly honoring user permissions) before a duplicate question is ever posted.</p>
+      </div>
+      <div class="card">
+        <h3>Full-Text Search &amp; Duplicate Merge</h3>
+        <p>Searches question titles, descriptions, tags, and every answer body. Moderators can merge duplicate threads cleanly without losing votes or tags.</p>
+      </div>
+      <div class="card">
+        <h3>Granular RBAC &amp; Controlled Tags</h3>
+        <p>Separately control who can submit questions, who can answer, who can pin curated FAQs, and who can create new tags—plus global tag rename/merge and a built-in Compliance Audit Trail.</p>
+      </div>
+      <div class="card">
+        <h3>Live FAQ Accordion Macro</h3>
+        <p>Embed questions <strong>and</strong> verified answers directly on any Confluence page via <code>/AnswerFlow</code>, with an optional inline <em>Ask a Question</em> composer.</p>
+      </div>
+    </div>
+
+    <h2>5-Minute Quickstart</h2>
+    <ol>
+      <li>Install <strong>AnswerFlow</strong> from the Atlassian Marketplace into your Confluence Cloud site.</li>
+      <li>Open <strong>Apps → AnswerFlow Q&amp;A</strong> (site-wide hub) or open any Space sidebar → <strong>Space Q&amp;A</strong>.</li>
+      <li>Click <strong>Load Sample Q&amp;A</strong> to preview an answered FAQ immediately, or click <strong>Ask a Question</strong> to post your first real question.</li>
+      <li>Click <strong>Check Existing Answers (Zero-Egress AI)</strong> inside the composer to test grounded zero-egress deflection.</li>
+      <li>Type <code>/AnswerFlow</code> inside any Confluence page editor to embed a live FAQ Accordion filtered by tag or pinned FAQ order.</li>
+      <li>Site administrators and moderators can configure RBAC roles, controlled tags, daily AI quotas, exports, and audit logs under the <strong>Governance &amp; Migration</strong> tab.</li>
+    </ol>
+
+    <h2 id="migration">Migrating from Questions for Confluence or Legacy Connect Q&amp;A Apps</h2>
+    <p>
+      With Atlassian Connect reaching End of Support on <strong>January 31, 2027</strong>, moving your team's Q&amp;A history into a pure <strong>Runs on Atlassian</strong> Forge app takes minutes:
+    </p>
+    <ol>
+      <li>Export your existing questions and answers into the simple AnswerFlow JSON bundle format below.</li>
+      <li>Open <strong>AnswerFlow Q&amp;A → Governance &amp; Migration</strong>.</li>
+      <li>Paste your JSON bundle into <strong>Import Questions Bundle (JSON)</strong> and click <strong>Run Migration Import</strong>.</li>
+    </ol>
+    <pre><code>{
+  "questions": [
+    {
+      "spaceKey": "ENG",
+      "title": "How do I request production VPN access?",
+      "body": "Need VPN credentials for staging and production.",
+      "tags": ["onboarding", "vpn"],
+      "isFaq": true,
+      "faqOrder": 1,
+      "answers": [
+        {
+          "body": "Open an IT Access ticket in JSM with manager approval.",
+          "authorName": "IT Operations",
+          "accepted": true
+        }
+      ]
+    }
+  ]
+}</code></pre>
+
+    <h2>Permissions &amp; Least-Privilege Scopes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Confluence Scope</th>
+          <th>Why AnswerFlow Needs It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>storage:app</code></td><td>Stores questions, answers, governance settings, and audit logs inside Atlassian-hosted Forge Storage.</td></tr>
+        <tr><td><code>search:confluence</code></td><td>Runs native CQL searches as the current user (<code>asUser()</code>) during AI Answer Deflection so restricted pages are never exposed.</td></tr>
+        <tr><td><code>read:page:confluence</code></td><td>Reads accessible page titles/snippets returned by user-scoped search.</td></tr>
+        <tr><td><code>write:page:confluence</code></td><td>Creates a clean Confluence page when a moderator clicks <em>Promote Accepted Answer to Page</em>.</td></tr>
+        <tr><td><code>read:space:confluence</code></td><td>Populates the target Space picker when promoting answers to documentation.</td></tr>
+        <tr><td><code>read:confluence-user</code></td><td>Displays author names and verifies Confluence administrator permissions.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="support">Support &amp; Contact</h2>
+    <p>
+      Need help migrating, found a bug, or want to request a feature? Reach Vortaix Labs support asynchronously (target response within 24–48 business hours):
+    </p>
+    <ul>
+      <li><strong>Email Support:</strong> <a href="mailto:raubingermaurice@gmail.com">raubingermaurice@gmail.com</a></li>
+      <li><strong>Vendor:</strong> Vortaix Labs</li>
+    </ul>
+  </main>
+
+  <footer>
+    &copy; 2026 Vortaix Labs · AnswerFlow for Confluence ·
+    <a href="privacy.html">Privacy Policy</a> ·
+    <a href="terms.html">Terms &amp; SLA</a>
+  </footer>
+</body>
+</html>

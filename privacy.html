@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy &amp; Data Security — AnswerFlow for Confluence</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">AnswerFlow for Confluence</a>
+      <nav class="nav-links">
+        <a href="index.html">Docs &amp; Quickstart</a>
+        <a href="privacy.html">Privacy &amp; Security</a>
+        <a href="terms.html">Terms &amp; SLA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <span class="badge">Runs on Atlassian · Zero External Data Egress</span>
+    <h1>Privacy Policy &amp; Data Security Architecture</h1>
+    <p class="lead">Effective Date: November 25, 2026 · Vendor: Vortaix Labs</p>
+
+    <h2>1. Zero External Egress Guarantee</h2>
+    <p>
+      <strong>AnswerFlow for Confluence</strong> is engineered strictly on Atlassian's serverless <strong>Forge</strong> platform and is designed to qualify for the <strong>Runs on Atlassian</strong> program:
+    </p>
+    <ul>
+      <li><strong>Zero External Servers:</strong> AnswerFlow operates no external vendor servers, databases, or third-party cloud infrastructure.</li>
+      <li><strong>Zero Data Egress:</strong> AnswerFlow declares zero external network egress permissions in its manifest. No Confluence content, questions, answers, or user details ever leave Atlassian's cloud trust boundary.</li>
+      <li><strong>Zero-Egress AI:</strong> Optional AI Answer Deflection executes exclusively via Atlassian's native Forge LLMs API (<code>@forge/llm</code>) inside Atlassian's managed boundary. Administrators can disable AI Answer Deflection or adjust the daily quota at any time.</li>
+      <li><strong>Zero Third-Party Analytics or Trackers:</strong> AnswerFlow does not embed third-party tracking scripts, advertising SDKs, or external telemetry services.</li>
+    </ul>
+
+    <h2>2. Data Stored &amp; Data Residency</h2>
+    <p>
+      All app data—including questions, answers, votes, tags, space RBAC configurations, and moderation audit entries—is stored exclusively inside <strong>Atlassian Forge Storage (<code>@forge/kvs</code>)</strong> pinned to your Confluence Cloud instance's configured Atlassian Data Residency region.
+    </p>
+
+    <h2>3. Permission &amp; Access Isolation</h2>
+    <p>
+      When running CQL searches for AI Answer Deflection or creating promoted documentation pages, AnswerFlow invokes Confluence REST APIs strictly using <code>asUser()</code>. This guarantees Confluence's native space and page restrictions are enforced at all times—users can never retrieve content from restricted pages they lack permission to view.
+    </p>
+
+    <h2>4. Data Retention, Export &amp; Deletion</h2>
+    <ul>
+      <li><strong>Portability:</strong> Site administrators and moderators can export all questions, answers, tags, and statuses in JSON or CSV format at any time via the <em>Governance &amp; Migration</em> tab.</li>
+      <li><strong>Deletion:</strong> Uninstalling AnswerFlow from your Confluence Cloud instance follows Atlassian's standard Forge app data lifecycle and deletion policies.</li>
+      <li><strong>GDPR &amp; Data Subject Requests:</strong> Because Vortaix Labs never receives or stores customer content outside your Atlassian tenant, your Confluence administrator retains direct control over all data. For assistance, contact <a href="mailto:raubingermaurice@gmail.com">raubingermaurice@gmail.com</a>.</li>
+    </ul>
+
+    <h2>5. Sub-processors</h2>
+    <p>
+      AnswerFlow uses <strong>zero external vendor sub-processors</strong>. All compute, storage, and AI inference are provided exclusively by Atlassian Pty Ltd under your existing Atlassian Cloud customer agreement.
+    </p>
+
+    <h2>6. Contact</h2>
+    <p>
+      Security inquiries, vulnerability disclosures, or privacy questions may be directed to Vortaix Labs at <a href="mailto:raubingermaurice@gmail.com">raubingermaurice@gmail.com</a>.
+    </p>
+  </main>
+
+  <footer>
+    &copy; 2026 Vortaix Labs · AnswerFlow for Confluence ·
+    <a href="index.html">Documentation</a> ·
+    <a href="terms.html">Terms &amp; SLA</a>
+  </footer>
+</body>
+</html>
